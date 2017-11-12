@@ -16,7 +16,6 @@
     "dependencies": {
         "bcryptjs": "latest",
         "cors": "latest",
-        "ejs": "latest",
         "express": "latest",
         "jsonwebtoken": "latest",
         "mongoose": "latest",
