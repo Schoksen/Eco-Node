@@ -1,0 +1,27 @@
+{
+    "name": "eco-node",
+    "version": "0.0.1",
+    "description": "A MEAN eCom Shop",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app"
+    },
+    "repository": {
+        "type": "git",
+        "url": "eco-node"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "latest",
+        "body-parser": "latest",
+        "cors": "latest",
+        "ejs": "latest",
+        "express": "latest",
+        "jsonwebtoken": "latest",
+        "mongoose": "latest",
+        "passport": "latest",
+        "passport-jwt": "latest"
+    }
+}
