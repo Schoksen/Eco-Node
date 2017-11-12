@@ -15,7 +15,6 @@
     "license": "ISC",
     "dependencies": {
         "bcryptjs": "latest",
-        "body-parser": "latest",
         "cors": "latest",
         "ejs": "latest",
         "express": "latest",
