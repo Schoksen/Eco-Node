@@ -9,30 +9,35 @@ import {ValidateService} from '../../services/validate.service';
   encapsulation: ViewEncapsulation.None
 })
 export class RegisterComponent implements OnInit {
+
 name: string;
-username: string;
+userName: string;
 email: string;
 password: string;
 agb: boolean;
 
-  constructor(private ValidateService: ValidateService) { }
+//  constructor(private ValidateService: ValidateService) {
+
+//  }
 
   ngOnInit() {
+
   }
 
-  onFormSubmit(userForm: NgForm) {
+  onSubmit() {
       const user = {
-        name: [this.name, Validators.required],
-        username: this.username,
+        name: this.name,
+        userName: this.userName,
         email: this.email,
         password: this.password,
         agb: this.agb
       }
+
   //Required Fields
-  if(!this.ValidateService.validateRegister(user)){
-  console.log('Leere Felder');
-  return false;
-    }
+//  if(!this.ValidateService.validateRegister(user)){
+//  console.log('Leere Felder');
+//  return false;
+//    }
   console.log(user);
   }
 }

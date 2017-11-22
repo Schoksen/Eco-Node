@@ -1,25 +1,25 @@
-<form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+<form #userForm="ngForm" (ngSubmit)="onSubmit()">
   <fieldset>
-    <legend>Legend</legend>
+    <legend>Form to do stuff</legend>
     <div class="form-group">
-      <label for="InputName">Name</label>
-      <input required [(ngModel)]="name" name="name" type="text" class="form-control" aria-describedby="nameHelp" placeholder="Enter name" [ngModelOptions]="{ updateOn: 'blur' }">
-      <small id="emailHelp" class="form-text text-muted">State your name please.</small>
+      <label for="name">Name</label>
+      <input required [(ngModel)]="name" name="name" id="name" type="text" class="form-control" placeholder="Enter name">
+      <small class="form-text text-muted">State your name please.</small>
     </div>
     <div class="form-group">
-      <label for="InputUserName">Username</label>
-      <input required [(ngModel)]="username" name="username" type="text" class="form-control" aria-describedby="usernameHelp" placeholder="Enter username" [ngModelOptions]="{ updateOn: 'blur' }">
-      <small id="emailHelp" class="form-text text-muted">State your username please.</small>
+      <label for="userName">Username</label>
+      <input required [(ngModel)]="userName" name="userName" id="userName" type="text" class="form-control" placeholder="Enter username">
+      <small class="form-text text-muted">State your username please.</small><br>
     </div>
     <div class="form-group">
-      <label for="InputEmail1">Email address</label>
-      <input required email [(ngModel)]="email" name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" [ngModelOptions]="{ updateOn: 'blur' }">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <label for="email">Email address</label>
+      <input required email [(ngModel)]="email" name="email" id="email" type="email" class="form-control" placeholder="Enter email">
+      <small class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
-      <label for="InputPassword1">Password</label>
-      <input required [(ngModel)]="password" name="password" type="password" class="form-control" placeholder="Password">
-      <small id="passwordHelp" class="form-text text-muted">He protec...</small>
+      <label for="password">Password</label>
+      <input required [(ngModel)]="password" name="password" id="password" type="password" class="form-control" placeholder="Password">
+      <small class="form-text text-muted">He protec...</small>
     </div>
     <div class="form-check">
       <label class="form-check-label">
@@ -27,6 +27,6 @@
         Trade your soul...
       </label>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid">Submit</button>
   </fieldset>
 </form>
