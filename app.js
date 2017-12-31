@@ -7,18 +7,16 @@ const mongoose = require('mongoose');
 const config = require('./config/database');
 
 //Connect to MongoDB
-mongoose.connect(config.database, {
-    useMongoClient: true
+var db = mongoose.createConnection(config.database);
+
+//On MongoDB Connection Error do
+db.on('error', (err) => {
+    console.log('Database error: ' + err);
   });
 
 //On MongoDB Connection do
-mongoose.connection.on('connected', () => {
+db.once('open', () => {
     console.log('Connected to database ' + config.database);
-  });
-
-//On MongoDB Connection Error do
-mongoose.connection.on('error', (err) => {
-    console.log('Database error: ' + err);
   });
 
 //Launch Express

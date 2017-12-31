@@ -13,17 +13,12 @@ router.post('/register', (req, res, next) => {
     username: req.body.username,
     password: req.body.password
   });
+  //Create newUser in the Database User
   User.adduser(newUser, (err, User) => {
     if (err) {
-      res.json({
-        success: false,
-        msg: 'Failed to register user'
-      });
+      res.json({success: false, msg: 'Failed to register user'});
     } else {
-      res.json({
-        success: true,
-        msg: 'user registered'
-      });
+      res.json({success: true, msg: 'user registered'});
     }
   });
 });
@@ -36,10 +31,7 @@ router.post('/authenticate', (req, res, next) => {
   User.getuserByusername(username, (err, User) => {
     if (err) throw err;
     if (!User) {
-      return res.json({
-        success: false,
-        msg: 'user not found'
-      });
+      return res.json({success: false, msg: 'user not found'});
     }
 
     User.comparePassword(password, User.password, (err, isMatch) => {
@@ -60,10 +52,7 @@ router.post('/authenticate', (req, res, next) => {
           }
         });
       } else {
-        return res.json({
-          success: false,
-          msg: 'Wrong Password'
-        });
+        return res.json({success: false, msg: 'Wrong Password'});
       }
     });
   });
@@ -74,9 +63,7 @@ const authenticate = passport.authenticate('jwt', {session: false});
 
 //Profile
 router.get('/profile', authenticate , (req, res, next) => {
-  res.json({
-    User: req.User
-  });
+  res.json({User: req.User});
 });
 
 module.exports = router;
