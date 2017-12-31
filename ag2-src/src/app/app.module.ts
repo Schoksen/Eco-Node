@@ -1,9 +1,10 @@
 //Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
+import { RouterModule} from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 //Components
 import { AppComponent } from './app.component';
@@ -15,7 +16,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 //Services
-import {ValidateService} from './services/validate.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -28,11 +29,13 @@ import {ValidateService} from './services/validate.service';
     ProfileComponent
   ],
   imports: [
+    HttpModule,
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [ValidateService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
