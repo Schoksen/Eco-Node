@@ -18,7 +18,7 @@
         "cors": "latest",
         "express": "latest",
         "jsonwebtoken": "latest",
-        "mongoose": "^5.0.0-rc0",
+        "mongoose": "^5.0.0-rc1",
         "mongoose-unique-validator": "^1.0.6",
         "passport": "latest",
         "passport-jwt": "latest"

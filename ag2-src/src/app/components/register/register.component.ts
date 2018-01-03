@@ -12,37 +12,35 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   name: string;
-  userName: string;
+  username: string;
   email: string;
   password: string;
   agb: boolean;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   onRegisterSubmit() {
     const user = {
       name: this.name,
-      userName: this.userName,
+      username: this.username,
       email: this.email,
       password: this.password,
       agb: this.agb
     }
     console.log(user);
 
-  //Register User
-this.authService.registerUser(user).subscribe(data => {
-  if (data.success){
-    console.log('Registration successful');
-    this.router.navigate(['login'],);
-  } else {
-    console.log('Registration unsuccessful');
-    this.router.navigate(['/register'],);
-  }
-});
+    //Register User
+    this.authService.registerUser(user).subscribe(data => {
+      if (data.success) {
+        console.log('Registration successful');
+        this.router.navigate(['login'], );
+      } else {
+        console.log('Registration unsuccessful');
+        this.router.navigate(['/register'], );
+      }
+    });
   }
 
 

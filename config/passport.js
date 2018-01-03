@@ -14,13 +14,8 @@ function passportfunction(passport) {
 
 function mypayload(jwt_payload, done) {
   User.getUserById(jwt_payload.data._id, (err, user) => {
-    if (err) {
-      return done(err, false);
-    };
-    if (user) {
-      return done(null, user);
-    } else {
-      return done(null, false);
-    }
+    if (err) {return done(err, false);}
+    if (user) {return done(null, user);
+    } else {return done(null, false);}
   });
 };
