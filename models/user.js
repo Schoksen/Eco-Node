@@ -47,6 +47,14 @@ module.exports.getUserByUsername = function(username, callback) {
   User.findOne(query, callback);
 };
 
+//Match Password?
+module.exports.comparemyPassword = function(inputPw, hash, callback) {
+  bcrypt.compare(inputPw, hash, (err, isMatch) => {
+      if (err) throw err;
+      callback(null, isMatch);
+    });
+};
+
 //Save new User to the Database encrypted!
 module.exports.addUser = function(newUser, callback) {
   bcrypt.genSalt(10, (err, salt) => {
@@ -55,13 +63,5 @@ module.exports.addUser = function(newUser, callback) {
       newUser.password = hash;
       newUser.save(callback);
     });
-  });
-};
-
-//Match Password?
-module.exports.comparePassword = function(candidatePassword, hash, callback) {
-  bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
-    if (err) throw err;
-    callback(null, isMatch);
   });
 };

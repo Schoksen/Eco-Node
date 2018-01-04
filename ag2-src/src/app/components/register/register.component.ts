@@ -29,19 +29,16 @@ export class RegisterComponent implements OnInit {
       password: this.password,
       agb: this.agb
     }
-    console.log(user);
 
     //Register User
     this.authService.registerUser(user).subscribe(data => {
       if (data.success) {
         console.log('Registration successful');
-        this.router.navigate(['login'], );
+        this.router.navigate(['login']);
       } else {
         console.log('Registration unsuccessful');
-        this.router.navigate(['/register'], );
+        this.router.navigate(['register']);
       }
     });
   }
-
-
 }
