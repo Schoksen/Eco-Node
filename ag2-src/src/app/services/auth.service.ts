@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
@@ -13,23 +12,23 @@ export class AuthService {
   registerUser(user) {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
-    interface res { success: string; };
+    interface res { success: boolean; };
     return this.http.post<res>(this.url + 'register', user, { headers: headers });
   }
 
   authenticateUser(user) {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
-    interface res { success: string; token: string; user: string; };
+    interface res { success: boolean; token: string; user: string; };
     return this.http.post<res>(this.url + 'authenticate', user, { headers: headers });
   }
 
   getProfile() {
-    let headers = new HttpHeaders();
     this.loadToken();
+    let headers = new HttpHeaders();
     headers = headers.append('Authorization', this.authToken);
     headers = headers.append('Content-Type', 'application/json');
-    interface res { user: string; };
+    interface res { success: boolean; };
     return this.http.get<res>(this.url + 'profile', { headers: headers });
   }
 

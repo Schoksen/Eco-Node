@@ -73,15 +73,11 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 //Authentication with token
-const authenticate = passport.authenticate('jwt', {
-  session: false
-});
+const authenticate = passport.authenticate('jwt', {session: false});
 
 //Profile
 router.get('/profile', authenticate, (req, res, next) => {
-  res.json({
-    User: req.User
-  });
+  res.json({success: true, user: req.user});
 });
 
 module.exports = router;
