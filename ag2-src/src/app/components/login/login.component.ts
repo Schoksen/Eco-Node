@@ -16,15 +16,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() { }
 
-  onLoginSubmit(){
-    const user = {
-      username: this.username,
-      password: this.password
-    }
+  onLoginSubmit() {
+
+
+    const user = { username: this.username, password: this.password };
+
     this.authService.authenticateUser(user).subscribe(data => {
       if (data.success) {
         this.authService.storeUserData(data.token, data.user);
-        console.log(data);
         console.log('Login successful');
         this.router.navigate(['profile']);
       } else {

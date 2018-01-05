@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule} from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 //Components
 import { AppComponent } from './app.component';
@@ -29,7 +29,7 @@ import { AuthService } from './services/auth.service';
     ProfileComponent
   ],
   imports: [
-    HttpModule,
+    HttpClientModule,
     BrowserModule,
     RouterModule,
     AppRoutingModule,

@@ -1,39 +1,51 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
   authToken: any;
   user: any;
+  private readonly url: string = 'http://localhost:3000/users/';
 
-
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   registerUser(user) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/register', user, { headers: headers })
-      .map(res => res.json());
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    interface res { success: string; };
+    return this.http.post<res>(this.url + 'register', user, { headers: headers });
   }
 
   authenticateUser(user) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/authenticate', user, { headers: headers })
-      .map(res => res.json());
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    interface res { success: string; token: string; user: string; };
+    return this.http.post<res>(this.url + 'authenticate', user, { headers: headers });
+  }
+
+  getProfile() {
+    let headers = new HttpHeaders();
+    this.loadToken();
+    headers = headers.append('Authorization', this.authToken);
+    headers = headers.append('Content-Type', 'application/json');
+    interface res { user: string; };
+    return this.http.get<res>(this.url + 'profile', { headers: headers });
+  }
+
+  loadToken() {
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
   }
 
   storeUserData(token, user) {
     localStorage.setItem('id_token', token);
-    console.log(token);
     localStorage.setItem('user', JSON.stringify(user));
-    console.log(user)
     this.authToken = token;
     this.user = user;
   }
 
-  logoutUser(){
+  logoutUser() {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
