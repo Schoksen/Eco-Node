@@ -1,4 +1,5 @@
 Ideen.txt
 MongoDB_Setup.txt
-node_modules/
-ag2-src/node_modules/
+
+# dependencies
+/node_modules
