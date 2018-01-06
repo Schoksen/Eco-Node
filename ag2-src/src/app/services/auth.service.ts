@@ -28,12 +28,19 @@ export class AuthService {
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', this.authToken);
     headers = headers.append('Content-Type', 'application/json');
-    interface res { success: boolean; };
+    interface res {
+      success: boolean;
+      user: {
+        name: string;
+        username: string;
+        email: string;
+      };
+    };
     return this.http.get<res>(this.url + 'profile', { headers: headers });
   }
 
   loadToken() {
-    const token = localStorage.getItem('id_token');
+    const token = localStorage.getItem('id_token') || '';
     this.authToken = token;
   }
 

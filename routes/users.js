@@ -36,7 +36,7 @@ router.post('/authenticate', (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
 
-  User.getUserByUsername(username, (err, user) => { //Works
+  User.getUserByUsername(username, (err, user) => {
     if (err) throw err;
     if (!user) {
       return res.json({
@@ -73,11 +73,16 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 //Authentication with token
-const authenticate = passport.authenticate('jwt', {session: false});
+const authenticate = passport.authenticate('jwt', {
+  session: false
+});
 
 //Profile
 router.get('/profile', authenticate, (req, res, next) => {
-  res.json({success: true, user: req.user});
+  res.json({
+    success: true,
+    user: req.user
+  });
 });
 
 module.exports = router;
