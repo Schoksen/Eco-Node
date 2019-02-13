@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {  }
 
-  onLogoutClick(){
+  onLogoutClick() {
     this.authService.logoutUser();
     console.log('You are logged out');
     this.router.navigate(['/']);

@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
         this.email = profile.user.email;
       },
       err => {
-        //this.router.navigate(['/']);
+        // this.router.navigate(['/']);
         console.log(err);
       });
   }

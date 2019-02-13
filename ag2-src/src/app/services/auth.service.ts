@@ -12,15 +12,15 @@ export class AuthService {
   registerUser(user) {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
-    interface res { success: boolean; };
-    return this.http.post<res>(this.url + 'register', user, { headers: headers });
+    interface Res { success: boolean; }
+    return this.http.post<res>(this.url + 'register', user, headers );
   }
 
   authenticateUser(user) {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
-    interface res { success: boolean; token: string; user: string; };
-    return this.http.post<res>(this.url + 'authenticate', user, { headers: headers });
+    interface Res { success: boolean; token: string; user: string; }
+    return this.http.post<res>(this.url + 'authenticate', user, headers );
   }
 
   getProfile() {
@@ -28,15 +28,15 @@ export class AuthService {
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', this.authToken);
     headers = headers.append('Content-Type', 'application/json');
-    interface res {
+    interface Res {
       success: boolean;
       user: {
         name: string;
         username: string;
         email: string;
       };
-    };
-    return this.http.get<res>(this.url + 'profile', { headers: headers });
+    }
+    return this.http.get<res>(this.url + 'profile', headers );
   }
 
   loadToken() {
